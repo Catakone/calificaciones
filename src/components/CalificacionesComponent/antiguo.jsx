@@ -5,9 +5,6 @@ import { useState, useEffect } from "react";
 function CalificacionesComponent() {
 
     const [calificacion, setCalificacion] = useState([]);
-    
-
-    
 
     useEffect(() => {
         async function fetchCali() {
@@ -28,23 +25,6 @@ function CalificacionesComponent() {
         }
         fetchCali();
     }, []);
-
-    const calificacionesAgrupadas = calificacion.reduce((acumulador, calificacion) => {
-        const nombreUsuario = calificacion.userInfo.nombre;
-        // Verificar si ya existe un objeto con ese nombre de usuario
-        if (!acumulador[nombreUsuario]) {
-            // Si no existe, creamos un nuevo objeto con ese nombre de usuario
-            acumulador[nombreUsuario] = {
-                nombre: nombreUsuario,
-                correos: [calificacion.userInfo.correo],
-                calificaciones: [calificacion.calificacion]
-            };
-        } else {
-            // Si ya existe, simplemente agregamos el correo y la calificación
-            acumulador[nombreUsuario].calificaciones.push(calificacion.calificacion);
-        }
-        return acumulador;
-    }, {});
 
 
     const [showModal, setShowModal] = React.useState(false);
@@ -89,28 +69,31 @@ function CalificacionesComponent() {
                                     </tr>
                                 </thead>
                                 <tbody>
-                                {Object.values(calificacionesAgrupadas).map((calificacion, index) => (
-                                    <tr key={index} className="odd:bg-white even:bg-gray-50 dark:border-gray-700 text-center">
-                                        <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
-                                            {calificacion.nombre}
-                                        </th>
-                                        <td className="px-6 py-4 text-gray-900">
-                                            {calificacion.correos}
-                                        </td>
-                                        {calificacion.calificaciones.map((calificacion, index) => (
-                                        <td key={index} className="px-6 py-4 text-gray-900">
-                                            
-                                                <span>{calificacion}</span>
-                                           
-                                        </td>
-                                         ))}
-                                         <td className="px-6 py-4">
+                                    {calificacion.map((calificaciones) => (
+                                        <tr key={calificaciones._id} className="odd:bg-white even:bg-gray-50 dark:border-gray-700 text-center">
+                                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                                {calificaciones.userInfo.nombre}
+                                            </th>
+                                            <td className="px-6 py-4 text-gray-900">
+                                                {calificaciones.userInfo.correo}
+                                            </td>
+                                            <td className="px-6 py-4 text-gray-900">
+                                                {calificaciones.calificacion}
+                                            </td>
+                                            <td className="px-6 py-4 text-gray-900">
+                                                {calificaciones.calificacion}
+                                            </td>
+                                            <td className="px-6 py-4 text-gray-900">
+                                                {calificaciones.calificacion}
+                                            </td>
+
+                                            <td className="px-6 py-4">
                                                 <button className="font-medium text-blue-600 hover:underline p-4" onClick={() => setShowModal(true)}>Edit</button>
 
                                                 <button className="font-medium text-red-600 hover:underline" onClick={() => setShowDelete(true)} >Eliminar</button>
                                             </td>
-                                    </tr>
-                                ))}
+                                        </tr>
+                                    ))}
                                 </tbody>
                                 {showModal ? (
                                     <div>
@@ -143,32 +126,24 @@ function CalificacionesComponent() {
                                                                     Español
                                                                 </th>
                                                                 <th scope="col" className="px-6 py-3">
-                                                                    Historia
+                                                                    Maatematicas
                                                                 </th>
                                                                 <th scope="col" className="px-6 py-3">
-                                                                    Matematicas
+                                                                    Historia
                                                                 </th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             <tr>
 
-                                                            <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">
-                                                                <div>
-                                                                    <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  block w-full p-2.5 dark:placeholder-gray-400" placeholder="10" required />
-                                                                </div>
-                                    
+                                                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                                                Calificacion 1
                                                             </th>
-                                                            <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">
-                                                                <div>
-                                                                    <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400" placeholder="1" required />
-                                                                </div>
+                                                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                                                Calificacion 2
                                                             </th>
-                                                            <th scope="row" className="px-6 py-4 font-medium whitespace-nowrap">
-                                                                <div>
-                                                                    <input type="text" id="first_name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:placeholder-gray-400" placeholder="5" required />
-                                                                </div>
-                                    
+                                                            <th scope="row" className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                                                                Calificacion 3
                                                             </th>
                                                             </tr>
 

@@ -1,12 +1,21 @@
 import './App.css';
- import NavbarComponent from './components/NavbarComponent/NavbarComponent';  
-//import RegistroComponent from './components/RegistroComponent/RegistroComponent';
-//import LoginComponent from './components/LoginComponent/LoginComponent';
+import NavbarComponent from './components/NavbarComponent/NavbarComponent';
+import RegistroComponent from './components/RegistroComponent/RegistroComponent';
+import LoginComponent from './components/LoginComponent/LoginComponent';
 import ReprobadosComponent from './components/ReprobadosComponent/ReprobadosComponent';
 import CalificacionesComponent from './components/CalificacionesComponent/CalificacionesComponent';
+
+
+
+
+
 function App() {
-  return(
+
+
+
+  return (
     <div>
+
       <div>
         <NavbarComponent></NavbarComponent>
       </div>
@@ -16,21 +25,24 @@ function App() {
       {/* <div>
         <LoginComponent></LoginComponent>
       </div> */}
-      {/* <div>
-        <CalificacionesComponent></CalificacionesComponent>
-      </div> */}
       <div>
-        <ReprobadosComponent></ReprobadosComponent>
+        <CalificacionesComponent></CalificacionesComponent>
       </div>
+      {/* <div>
+        <ReprobadosComponent></ReprobadosComponent>
+      </div> */}
+
 
 
     </div>
-    
-    
-    
+
+
+
   );
- 
- 
+
+
 }
 
+
 export default App;
+
