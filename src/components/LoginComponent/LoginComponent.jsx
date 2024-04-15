@@ -1,4 +1,5 @@
 import "./LoginComponent.css"
+import {Outlet, Link} from "react-router-dom";
 
 function LoginComponent() {
 
@@ -21,7 +22,7 @@ function LoginComponent() {
                                 <input type="password" name="password" id="password" placeholder="••••••••" className="font-questrial bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-md focus:ring-primary-600 focus:border-primary-600 block w-11/12 ml-2 p-2.5" required=""/>
                             </div>
                             <p className="font-questrial text-sm font-light text-gray-500 dark:text-gray-400">
-                                ¿No cuenta? <a href="" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Registrate</a>
+                                ¿No cuenta? <Link to="/registro" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Registrate</Link>
                             </p>
                             <button id="sumbitButon" className=" text-white bg-owo hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Iniciar Sesion</button>
                             
@@ -31,6 +32,8 @@ function LoginComponent() {
                     </div>
 
                 </div>
+                <hr />
+                <Outlet/>
 
             </div>
         </section>
