@@ -2,6 +2,25 @@ import "./RegistroComponent.css"
 import { useState } from "react";
 
 function RegistroComponent() {
+    const advertenciaUsuario = () => {
+        if(nombre.length < 5){
+            const synth = window.speechSynthesis;
+            let text = "El nombre debe tener al menos 5 caracteres";
+            const utterThis = new SpeechSynthesisUtterance(text);
+            utterThis.lang = "es-ES";
+            synth.speak(utterThis);
+            console.log("El nombre debe tener al menos 5 caracteres");
+        }
+        else{
+            const synth = window.speechSynthesis;
+            let text = "Nombre correcto";
+            const utterThis = new SpeechSynthesisUtterance(text);
+            utterThis.lang = "es-ES";
+            synth.speak(utterThis);
+            registrarUsuario();
+
+        }
+    }
 
     //Crear estados para este componente
     const [nombre, setName] = useState('');
@@ -95,7 +114,7 @@ function RegistroComponent() {
                             </p>
                             <button
                             onClick = {() => {
-                                registrarUsuario();
+                                advertenciaUsuario();
             
                             }} id="sumbitButon" className=" text-white bg-owo hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">Registrarse</button>
                             

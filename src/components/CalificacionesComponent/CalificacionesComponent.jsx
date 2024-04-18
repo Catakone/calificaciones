@@ -103,15 +103,14 @@ function CalificacionesComponent() {
               <div className="flex flex-col px-6 py-8 mx-auto md:h-screen lg:py-0">
                 <div className=" pt-20 text-left">
                   <h3 className="text-4xl font-questrial  text-white flex-r">
-                    Alumnos
+                    Calificaciones
                   </h3>
                   <button
                     onClick={(e) => {
                       /* setCalificaciones({
-                        edad: "",
                         nombre: "",
-                        correo: "",
-                        password: "",
+                        materia: "",
+                        calificacion: "",
                       });
                       setIsPost(true);
                       */
@@ -120,7 +119,7 @@ function CalificacionesComponent() {
                     id="sumbitButon"
                     className=" text-white bg-owo hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                   >
-                    Agregar Alumno
+                    Agregar Calificacion
                   </button>
                 </div>
     
@@ -141,9 +140,7 @@ function CalificacionesComponent() {
                           <th scope="col" className="px-6 py-3">
                             Historia
                           </th>
-                          <th scope="col" className="px-6 py-3">
-                            Accion
-                          </th>
+
                         </tr>
                       </thead>
                       <tbody>
@@ -155,7 +152,7 @@ function CalificacionesComponent() {
                           const history = materias.find((materia) => materia.nombre === "Historia");
                           return (
                             <tr
-                              key={alumno.id_usuario}
+                              key={alumno}
                               className="odd:bg-white even:bg-gray-50 dark:border-gray-700 text-center"
                             >
                               <th
@@ -168,80 +165,13 @@ function CalificacionesComponent() {
                               <td className="px-6 py-4 text-gray-900">{math?.calificacion ?? 0}</td>
                               <td className="px-6 py-4 text-gray-900">{history?.calificacion ?? 0}</td>
                              
-    
-                              <td className="px-6 py-4">
-                                <button
-                                  onClick={(e) => {
-                                    setCalificaciones(alumno);
-                                    console.log(alumno);
-                                    setIsPost(false);
-                                    /*                                                             setIsPost(false)
-                                     */ 
-                                    openModal();
-                                  }}
-                                  className="font-medium text-blue-600 hover:underline p-4"
-                                >
-                                  Edit
-                                </button>
-    
-                                <button
-                                  onClick={async (e) => {
-                                    Swal.fire({
-                                      title: "¿Estás seguro?",
-                                      text: "¡No podrás revertir esto!",
-                                      icon: "warning",
-                                      /* showCancelButton: true,
-                                       confirmButtonColor: "#3085d6",
-                                       cancelButtonColor: "#d33",
-                                       confirmButtonText: "Si, eliminar",
-                                       cancelButtonText: "Cancelar", */
-                                    }).then(async (result) => {
-    
-    
-    
-    
-    
-                                      if (!result.isConfirmed) {
-                                        return;
-                                      }
-                                      fetch(
-                                        `http://localhost:3000/usuarios/${alumno.id}`,
-                                        {
-                                            method: "DELETE",
-                                            
-                                        }
-                                      ).then((response) => {
-                                        Swal.fire(
-                                            "¡Eliminado!",
-                                            "El alumno ha sido eliminado.",
-                                            "success"
-                                            ).then(()=> {
-                                                window.location.reload()
-                                            });
-                                      }).catch((error) => {
-                                        alert("Error al enviar los datos");
-                                        console.error("Error: ", error);
-                                      });
-    
-    
-    
-    
-    
-    
-    
-                                    });
-                                  }}
-                                  className="font-medium text-red-600 hover:underline"
-                                >
-                                  Eliminar
-                                </button>
-                              </td>
                             </tr>
                           );
                         })}
                       </tbody>
                     </table>
                   </div>
+                 
                 </div>
               </div>
               <hr />
